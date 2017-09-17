@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import shelves from './Shelves'
 
 const Book = props => {
   return (
@@ -7,11 +8,15 @@ const Book = props => {
       <div className="book-top">
         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.image})` }}></div>
             <div className="book-shelf-changer">
-              <select>
+              <select
+                value={ props.shelf }
+                onChange={ (event) => props.onMoveBook(event.target.value) }>
                 <option value="none" disabled>Move to...</option>
-                <option value="currentlyReading">Currently Reading</option>
-                <option value="wantToRead">Want to Read</option>
-                <option value="read">Read</option>
+                {
+                  shelves.map((shelf) => (
+                    <option key={shelf.key} value={ shelf.key }>{ shelf.title }</option>
+                  ))
+                }
                 <option value="none">None</option>
               </select>
             </div>
@@ -25,7 +30,9 @@ const Book = props => {
 Book.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  authors: PropTypes.string.isRequired
+  authors: PropTypes.string.isRequired,
+  shelf: PropTypes.string.isRequired,
+  onMoveBook: PropTypes.func.isRequired
 }
 
 export default Book
