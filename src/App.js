@@ -10,23 +10,18 @@ class BooksApp extends React.Component {
     books: []
   }
 
-  shelves = [
-    {
-      key: "currentlyReading",
-      title: "Currently Reading"
-    },
-    {
-      key: "wantToRead",
-      title: "Want to Read"
-    },
-    {
-      key: "read",
-      title: "Read"
-    }
-  ]
+  updateBooks = () => {
+    BooksAPI.getAll().then(books => this.setState({ books }))
+  }
+
+  moveBook = (book, shelf) => {
+    BooksAPI
+      .update(book, shelf)
+      .then(() => this.updateBooks())
+  }
 
   componentDidMount() {
-    BooksAPI.getAll().then(books => this.setState({ books }))
+    this.updateBooks();
   }
 
   render() {
@@ -36,9 +31,9 @@ class BooksApp extends React.Component {
           exact path="/"
           render={() => (
             <BookList
-              shelves={ this.shelves }
               books={ this.state.books }
               title={ "MyReads by @helioricardo" }
+              onMoveBook={ this.moveBook }
             />
           )}
         />

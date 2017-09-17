@@ -2,8 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'react-router-dom/Link'
 import Shelf from './Shelf'
+import shelves from './Shelves'
 
-const BookList = ({ shelves, books, title }) => {
+const BookList = ({ books, title, onMoveBook }) => {
   return (
     <div className="list-books">
       <div className="list-books-title">
@@ -16,6 +17,7 @@ const BookList = ({ shelves, books, title }) => {
               <Shelf
                 key={ shelf.key }
                 shelf={ shelf }
+                onMoveBook={ onMoveBook }
                 books={
                   books.filter(book => book.shelf === shelf.key)
                 }
@@ -32,9 +34,9 @@ const BookList = ({ shelves, books, title }) => {
 }
 
 BookList.propTypes = {
-  shelves: PropTypes.array.isRequired,
   books: PropTypes.array.isRequired,
-  title: PropTypes.string
+  title: PropTypes.string,
+  onMoveBook: PropTypes.func.isRequired
 }
 
 export default BookList
