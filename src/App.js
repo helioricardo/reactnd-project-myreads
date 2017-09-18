@@ -30,11 +30,15 @@ class BooksApp extends React.Component {
             books: prevState.books.filter(book => (book.id !== updatedBook.id))
           }))
         } else {
-          this.setState(prevState => ({
-            books: prevState.books.map(book => (
-              (book.id === updatedBook.id) ? updatedBook : book
-            ))
-          }))
+          this.setState(prevState => {
+            let allBooks = [...prevState.books, book]
+
+            return {
+              books: allBooks.map(book => (
+                (book.id === updatedBook.id) ? updatedBook : book
+              ))
+            }
+          })
         }
       })
   }
