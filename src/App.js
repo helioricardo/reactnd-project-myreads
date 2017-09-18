@@ -45,7 +45,7 @@ class BooksApp extends React.Component {
           )}
         />
         <Route
-          path="/add"
+          path="/search"
           component={BooksSearch}
         />
       </div>
