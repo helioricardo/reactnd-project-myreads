@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Modal from 'react-modal'
+import moment from 'moment'
 import shelves from './Shelves'
 import './BookDetail.css'
 
@@ -41,7 +42,7 @@ class BookDetail extends Component {
                 <div className="detail-authors">{ book.authors.join(" | ") }</div>
               }
               <div className="detail-info">
-                {`${book.publisher}, ${book.publishedDate} - ${book.language} - ${book.pageCount} pages`}
+                {`${book.publisher} - ${moment(book.publishedDate).format("MMM, D YYYY")} - (${book.language}) - ${book.pageCount} pages`}
               </div>
               {Array.isArray(book.categories) &&
                 <ul className="detail-categories">
