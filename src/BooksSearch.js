@@ -38,7 +38,7 @@ class BooksSearch extends React.Component {
               <li key={ book.id }>
                 <Book
                   shelf={ book.shelf }
-                  image={ book.imageLinks.thumbnail }
+                  image={ (book.imageLinks !== undefined) ? book.imageLinks.thumbnail : null }
                   title={ book.title }
                   authors={ (Array.isArray(book.authors)) ? book.authors.join(", ") : null }
                   onSearchPage

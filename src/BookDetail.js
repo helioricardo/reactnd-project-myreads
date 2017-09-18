@@ -6,6 +6,25 @@ import shelves from './Shelves'
 import './BookDetail.css'
 
 class BookDetail extends Component {
+  returnDetailsInfo = book => {
+    let detailsInfo = [];
+
+    if(book.publisher !== undefined) {
+      detailsInfo.push(book.publisher)
+    }
+    if(book.publishedDate !== undefined) {
+      detailsInfo.push(moment(book.publishedDate).format("MMM, D YYYY"))
+    }
+    if(book.language !== undefined) {
+      detailsInfo.push(book.language)
+    }
+    if(book.pageCount !== undefined) {
+      detailsInfo.push(book.pageCount + " pages")
+    }
+
+    return detailsInfo.join(" - ")
+  }
+
   render () {
     const { onClose, book, onMoveBook } = this.props
     const isValidBook = (book !== null && typeof book === 'object')
@@ -30,7 +49,7 @@ class BookDetail extends Component {
 
             <div className="detail-images">
               <div className="detail-cover"
-                style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.thumbnail})` }}
+                style={{ width: 128, height: 193, backgroundImage: `url(${(book.imageLinks !== undefined) ? book.imageLinks.thumbnail : ''})` }}
               />
               <a className="detail-link" target="_blank" href={ book.canonicalVolumeLink }>
                 More detail
@@ -41,9 +60,7 @@ class BookDetail extends Component {
               {Array.isArray(book.authors) &&
                 <div className="detail-authors">{ book.authors.join(" | ") }</div>
               }
-              <div className="detail-info">
-                {`${book.publisher} - ${moment(book.publishedDate).format("MMM, D YYYY")} - (${book.language}) - ${book.pageCount} pages`}
-              </div>
+              <div className="detail-info">{ this.returnDetailsInfo(book) }</div>
               {Array.isArray(book.categories) &&
                 <ul className="detail-categories">
                   {book.categories.map(category => (

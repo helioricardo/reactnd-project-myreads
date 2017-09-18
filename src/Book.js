@@ -31,7 +31,7 @@ const Book = props => (
 )
 
 Book.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   title: PropTypes.string.isRequired,
   authors: PropTypes.string,
   shelf: PropTypes.string.isRequired,
