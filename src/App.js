@@ -34,16 +34,28 @@ class BooksApp extends React.Component {
       })
   }
 
+  mapShelvesToSearchResults = searchResults => {
+    this.setState({
+      searchResults: searchResults.map(book => {
+        const bookOnShelf = this.state.books.find(bookOnShelf => (
+          bookOnShelf.id === book.id
+        ))
+        book.shelf = (bookOnShelf) ? bookOnShelf.shelf : "none"
+
+        return book;
+      })
+    })
+  }
+
   searchBooks = (query) => {
     BooksAPI
       .search(query, 20)
       .then(searchResults => {
-        console.log(searchResults)
         if(searchResults.error) {
           this.setState({ searchResults: [] })
           return
         }
-        this.setState({ searchResults })
+        this.mapShelvesToSearchResults(searchResults)
       })
   }
 

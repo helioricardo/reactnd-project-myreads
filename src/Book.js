@@ -4,7 +4,7 @@ import shelves from './Shelves'
 
 const Book = props => {
   return (
-    <div className="book">
+    <div className={(props.shelf !== "none") ? "book book-on-shelf" : "book"}>
       <div className="book-top">
         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.image})` }}></div>
             <div className="book-shelf-changer">

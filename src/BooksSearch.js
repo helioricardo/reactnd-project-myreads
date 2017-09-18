@@ -37,7 +37,7 @@ class BooksSearch extends React.Component {
             {searchResults.map(book => (
               <li key={ book.id }>
                 <Book
-                  shelf={ "none" }
+                  shelf={ book.shelf }
                   image={ book.imageLinks.thumbnail }
                   title={ book.title }
                   authors={ (Array.isArray(book.authors)) ? book.authors.join(", ") : null }
