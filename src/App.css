@@ -166,9 +166,14 @@ body, .app {
 .book-cover {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #eee;
+  transition: transform 300ms
 }
 .book-on-shelf .book-cover {
   transform: scale(0.8);
+}
+
+.book-cover:hover {
+  transform: scale(1.10);
 }
 
 .book-cover-title {
