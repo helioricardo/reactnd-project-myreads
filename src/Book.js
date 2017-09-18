@@ -17,7 +17,9 @@ const Book = props => {
                     <option key={shelf.key} value={ shelf.key }>{ shelf.title }</option>
                   ))
                 }
-                <option value="none">None</option>
+                { !props.onSearchPage &&
+                  <option value="none">None</option>
+                }
               </select>
             </div>
         </div>
@@ -32,7 +34,8 @@ Book.propTypes = {
   title: PropTypes.string.isRequired,
   authors: PropTypes.string,
   shelf: PropTypes.string.isRequired,
-  onMoveBook: PropTypes.func.isRequired
+  onMoveBook: PropTypes.func.isRequired,
+  onSearchPage: PropTypes.bool
 }
 
 export default Book

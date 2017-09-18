@@ -7,7 +7,8 @@ import BooksSearch from './BooksSearch'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    searchResults: []
   }
 
   updateBooks = () => {
@@ -33,6 +34,19 @@ class BooksApp extends React.Component {
       })
   }
 
+  searchBooks = (query) => {
+    BooksAPI
+      .search(query, 20)
+      .then(searchResults => {
+        console.log(searchResults)
+        if(searchResults.error) {
+          this.setState({ searchResults: [] })
+          return
+        }
+        this.setState({ searchResults })
+      })
+  }
+
   componentDidMount() {
     this.updateBooks();
   }
@@ -52,7 +66,16 @@ class BooksApp extends React.Component {
         />
         <Route
           path="/search"
-          component={BooksSearch}
+          render={({ history }) => (
+            <BooksSearch
+              searchResults={ this.state.searchResults }
+              onSearchBooks={ this.searchBooks }
+              onMoveBook={(book, shelf) => {
+                this.moveBook(book, shelf)
+                history.push('/')
+              }}
+            />
+          )}
         />
       </div>
     )
