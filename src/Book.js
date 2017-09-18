@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import shelves from './Shelves'
 
 const Book = props => (
+  <div className={(props.shelf !== "none" && props.onSearchPage) ? "book book-on-shelf" : "book"}>
     <div className="book-top">
       <button
         className="book-cover"
