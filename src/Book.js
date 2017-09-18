@@ -30,7 +30,7 @@ const Book = props => {
 Book.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  authors: PropTypes.string.isRequired,
+  authors: PropTypes.string,
   shelf: PropTypes.string.isRequired,
   onMoveBook: PropTypes.func.isRequired
 }
