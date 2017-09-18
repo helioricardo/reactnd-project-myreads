@@ -7,7 +7,8 @@ import BooksSearch from './BooksSearch'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    searchResults: []
   }
 
   updateBooks = () => {
@@ -19,11 +20,42 @@ class BooksApp extends React.Component {
       .update(book, shelf)
       .then(() => BooksAPI.get(book.id))
       .then(updatedBook => {
-        this.setState(prevState => ({
-          books: prevState.books.map(book => (
-            (book.id === updatedBook.id) ? updatedBook : book
-          ))
-        }))
+        if(updatedBook.shelf === "none") {
+          this.setState(prevState => ({
+            books: prevState.books.filter(book => (book.id !== updatedBook.id))
+          }))
+        } else {
+          this.setState(prevState => ({
+            books: prevState.books.map(book => (
+              (book.id === updatedBook.id) ? updatedBook : book
+            ))
+          }))
+        }
+      })
+  }
+
+  mapShelvesToSearchResults = searchResults => {
+    this.setState({
+      searchResults: searchResults.map(book => {
+        const bookOnShelf = this.state.books.find(bookOnShelf => (
+          bookOnShelf.id === book.id
+        ))
+        book.shelf = (bookOnShelf) ? bookOnShelf.shelf : "none"
+
+        return book;
+      })
+    })
+  }
+
+  searchBooks = (query) => {
+    BooksAPI
+      .search(query, 20)
+      .then(searchResults => {
+        if(searchResults.error) {
+          this.setState({ searchResults: [] })
+          return
+        }
+        this.mapShelvesToSearchResults(searchResults)
       })
   }
 
@@ -46,7 +78,16 @@ class BooksApp extends React.Component {
         />
         <Route
           path="/search"
-          component={BooksSearch}
+          render={({ history }) => (
+            <BooksSearch
+              searchResults={ this.state.searchResults }
+              onSearchBooks={ this.searchBooks }
+              onMoveBook={(book, shelf) => {
+                this.moveBook(book, shelf)
+                history.push('/')
+              }}
+            />
+          )}
         />
       </div>
     )

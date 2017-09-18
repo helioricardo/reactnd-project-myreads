@@ -4,7 +4,7 @@ import shelves from './Shelves'
 
 const Book = props => {
   return (
-    <div className="book">
+    <div className={(props.shelf !== "none") ? "book book-on-shelf" : "book"}>
       <div className="book-top">
         <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.image})` }}></div>
             <div className="book-shelf-changer">
@@ -17,7 +17,9 @@ const Book = props => {
                     <option key={shelf.key} value={ shelf.key }>{ shelf.title }</option>
                   ))
                 }
-                <option value="none">None</option>
+                { !props.onSearchPage &&
+                  <option value="none">None</option>
+                }
               </select>
             </div>
         </div>
@@ -30,9 +32,10 @@ const Book = props => {
 Book.propTypes = {
   image: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  authors: PropTypes.string.isRequired,
+  authors: PropTypes.string,
   shelf: PropTypes.string.isRequired,
-  onMoveBook: PropTypes.func.isRequired
+  onMoveBook: PropTypes.func.isRequired,
+  onSearchPage: PropTypes.bool
 }
 
 export default Book

@@ -15,7 +15,7 @@ const Shelf = ({ shelf, books, onMoveBook }) => {
                   shelf={ book.shelf }
                   image={ book.imageLinks.thumbnail }
                   title={ book.title }
-                  authors={ book.authors.join(", ") }
+                  authors={ (Array.isArray(book.authors)) ? book.authors.join(", ") : null }
                   onMoveBook={shelf => onMoveBook(book, shelf) }
                 />
               </li>
