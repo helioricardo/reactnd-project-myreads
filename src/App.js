@@ -4,11 +4,14 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BooksList from './BooksList'
 import BooksSearch from './BooksSearch'
+import BookDetail from './BookDetail'
 
 class BooksApp extends React.Component {
   state = {
     books: [],
-    searchResults: []
+    searchResults: [],
+    bookInDetail: null,
+    detailIsOpened: false
   }
 
   updateBooks = () => {
@@ -65,8 +68,24 @@ class BooksApp extends React.Component {
     this.updateBooks()
   }
 
+  detailOpen = book => {
+    this.setState({
+      bookInDetail: book,
+      detailIsOpened: true
+    })
+  }
+
+  detailClose = () => {
+    this.setState({ detailIsOpened: false })
+  }
+
   render = () => (
     <div className="app">
+      <BookDetail
+        book={ this.state.bookInDetail }
+        isOpen={ this.state.detailIsOpened }
+        onClose={ this.detailClose }
+      />
       <Route
         exact path="/"
         render={() => (
@@ -74,6 +93,7 @@ class BooksApp extends React.Component {
             books={ this.state.books }
             title={ "MyReads by @helioricardo" }
             onMoveBook={ this.moveBook }
+            onBookDetail={ this.detailOpen }
           />
         )}
       />
@@ -87,6 +107,7 @@ class BooksApp extends React.Component {
               this.moveBook(book, shelf)
               history.push('/')
             }}
+            onBookDetail={ this.detailOpen }
           />
         )}
       />

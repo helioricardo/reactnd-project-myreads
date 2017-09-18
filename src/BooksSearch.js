@@ -17,7 +17,7 @@ class BooksSearch extends React.Component {
   }
 
   render = () => {
-    const { searchResults, onMoveBook } = this.props
+    const { searchResults, onMoveBook, onBookDetail } = this.props
 
     return (
       <div className="search-books">
@@ -43,6 +43,7 @@ class BooksSearch extends React.Component {
                   authors={ (Array.isArray(book.authors)) ? book.authors.join(", ") : null }
                   onSearchPage
                   onMoveBook={shelf => onMoveBook(book, shelf) }
+                  onBookDetail={() => onBookDetail(book)}
                 />
               </li>
             ))}
@@ -56,7 +57,8 @@ class BooksSearch extends React.Component {
 BooksSearch.propTypes = {
   searchResults: PropTypes.array,
   onSearchBooks: PropTypes.func.isRequired,
-  onMoveBook: PropTypes.func.isRequired
+  onMoveBook: PropTypes.func.isRequired,
+  onBookDetail: PropTypes.func.isRequired,
 }
 
 export default BooksSearch

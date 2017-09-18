@@ -4,7 +4,10 @@ import shelves from './Shelves'
 
 const Book = props => (
     <div className="book-top">
-      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.image})` }}></div>
+      <button
+        className="book-cover"
+        onClick={() => props.onBookDetail()}
+        style={{ width: 128, height: 193, backgroundImage: `url(${props.image})` }} />
           <div className="book-shelf-changer">
             <select
               value={ props.shelf }
@@ -32,7 +35,8 @@ Book.propTypes = {
   authors: PropTypes.string,
   shelf: PropTypes.string.isRequired,
   onMoveBook: PropTypes.func.isRequired,
-  onSearchPage: PropTypes.bool
+  onSearchPage: PropTypes.bool,
+  onBookDetail: PropTypes.func.isRequired
 }
 
 export default Book

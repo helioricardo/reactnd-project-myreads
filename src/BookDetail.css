@@ -1,0 +1,132 @@
+.ReactModal__Overlay {
+  z-index: 999;
+}
+
+.detail-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: stretch;
+}
+
+.detail-header {
+  margin-bottom: 20px;
+}
+
+.detail-content {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: stretch;
+}
+
+
+/* book detail header */
+
+.detail-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  border: none;
+  font-size: 0;
+  background: transparent url(./icons/arrow-back.svg) center center;
+  height: 50px;
+  width: 50px;
+  background-size: contain;
+}
+
+.detail-title {
+  margin: 0;
+  font-weight: lighter;
+  padding-right: calc(50px + 20px);
+  color: #333;
+  font-size: 1.8em;
+}
+
+.detail-subtitle {
+  color: rgba(51, 51, 51, 0.6);
+  line-height: normal;
+  font-size: 70%;
+  margin-left: 0.8em;
+}
+
+
+/* book detail content */
+
+.detail-cover {
+  width: 128px;
+}
+
+.detail-link {
+  color: #2e7c31;
+  font-size: 13px;
+  margin-top: 10px;
+  display: inline-block;
+}
+
+.detail-detail {
+  flex: 1;
+  margin-left: 20px;
+  font-size: 13px;
+}
+
+.detail-authors {
+  color: #2e7c31;
+}
+
+.detail-info {
+  color: #777;
+}
+
+.detail-description {
+  color: #333;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.detail-categories {
+  list-style: none;
+  padding: 0;
+  margin: 5px 0 0 0;
+}
+
+.detail-categories li {
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 5px;
+  background: #2e7c31;
+  margin-right: 10px;
+  display: inline-block;
+  text-transform: lowercase;
+  font-size: 80%;
+}
+
+.detail-shelves {
+  list-style: none;
+  padding: 0;
+}
+
+.detail-shelves li {
+  display: inline-block;
+}
+
+.detail-shelves .detail-add {
+  margin-right: 10px;
+}
+
+.detail-shelves button {
+  color: #fff;
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: #999;
+  margin-right: 10px;
+  border: none;
+  transition: background-color 500ms;
+}
+
+.detail-shelves button.selected,
+.detail-shelves button:hover {
+  background: #2e7c31;
+}
