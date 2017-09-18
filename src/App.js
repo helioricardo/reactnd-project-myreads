@@ -1,6 +1,7 @@
 import React from 'react'
 import Route from 'react-router-dom/Route'
 import history from './history'
+import debounce from 'throttle-debounce/debounce'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BooksList from './BooksList'
@@ -71,6 +72,8 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     this.updateBooks()
+
+    this.searchBooks = debounce(300, false, this.searchBooks)
   }
 
   detailOpen = book => {
