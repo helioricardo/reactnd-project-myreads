@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import shelves from './Shelves'
 
 const Book = props => (
-  <div className={(props.shelf !== "none") ? "book book-on-shelf" : "book"}>
     <div className="book-top">
       <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.image})` }}></div>
           <div className="book-shelf-changer">
