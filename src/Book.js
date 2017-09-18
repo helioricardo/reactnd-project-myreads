@@ -16,7 +16,7 @@ const Book = props => (
               <option value="none" disabled>Move to...</option>
               {
                 shelves.map((shelf) => (
-                  <option key={shelf.key} value={ shelf.key }>{ shelf.title }</option>
+                  <option key={ shelf.key } value={ shelf.key }>{ shelf.title }</option>
                 ))
               }
               { !props.onSearchPage &&
