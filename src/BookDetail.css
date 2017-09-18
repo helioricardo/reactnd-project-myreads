@@ -59,11 +59,15 @@
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+.detail-links {
+  margin-top: 20px;
+}
+
 .detail-link {
   color: #2e7c31;
-  font-size: 13px;
-  margin-top: 10px;
-  display: inline-block;
+  font-size: 11px;
+  margin-top: 5px;
+  display: block;
 }
 
 .detail-detail {

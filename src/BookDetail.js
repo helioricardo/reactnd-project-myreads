@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Modal from 'react-modal'
 import moment from 'moment'
+import QRCode from 'qrcode.react'
 import shelves from './Shelves'
 import './BookDetail.css'
 
@@ -50,10 +51,17 @@ class BookDetail extends Component {
             <div className="detail-images">
               <div className="detail-cover"
                 style={{ width: 128, height: 193, backgroundImage: `url(${(book.imageLinks !== undefined) ? book.imageLinks.thumbnail : ''})` }}
-              />
-              <a className="detail-link" target="_blank" href={ book.canonicalVolumeLink }>
-                More detail
-              </a>
+              ></div>
+
+              {(book.canonicalVolumeLink !== undefined) && (
+                <div className="detail-links">
+                  <QRCode value={ book.canonicalVolumeLink } />
+
+                  <a className="detail-link" target="_blank" href={ book.canonicalVolumeLink }>
+                    More detail
+                  </a>
+                </div>
+              )}
             </div>
 
             <div className="detail-detail">
