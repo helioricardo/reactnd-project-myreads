@@ -12,7 +12,9 @@ class BooksApp extends React.Component {
   }
 
   updateBooks = () => {
-    BooksAPI.getAll().then(books => this.setState({ books }))
+    BooksAPI
+      .getAll()
+      .then(books => this.setState({ books }))
   }
 
   moveBook = (book, shelf) => {
@@ -60,38 +62,36 @@ class BooksApp extends React.Component {
   }
 
   componentDidMount() {
-    this.updateBooks();
+    this.updateBooks()
   }
 
-  render() {
-    return (
-      <div className="app">
-        <Route
-          exact path="/"
-          render={() => (
-            <BooksList
-              books={ this.state.books }
-              title={ "MyReads by @helioricardo" }
-              onMoveBook={ this.moveBook }
-            />
-          )}
-        />
-        <Route
-          path="/search"
-          render={({ history }) => (
-            <BooksSearch
-              searchResults={ this.state.searchResults }
-              onSearchBooks={ this.searchBooks }
-              onMoveBook={(book, shelf) => {
-                this.moveBook(book, shelf)
-                history.push('/')
-              }}
-            />
-          )}
-        />
-      </div>
-    )
-  }
+  render = () => (
+    <div className="app">
+      <Route
+        exact path="/"
+        render={() => (
+          <BooksList
+            books={ this.state.books }
+            title={ "MyReads by @helioricardo" }
+            onMoveBook={ this.moveBook }
+          />
+        )}
+      />
+      <Route
+        path="/search"
+        render={({ history }) => (
+          <BooksSearch
+            searchResults={ this.state.searchResults }
+            onSearchBooks={ this.searchBooks }
+            onMoveBook={(book, shelf) => {
+              this.moveBook(book, shelf)
+              history.push('/')
+            }}
+          />
+        )}
+      />
+    </div>
+  )
 }
 
 export default BooksApp
