@@ -1,5 +1,6 @@
 import React from 'react'
 import Route from 'react-router-dom/Route'
+import history from './history'
 import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BooksList from './BooksList'
@@ -89,6 +90,12 @@ class BooksApp extends React.Component {
         book={ this.state.bookInDetail }
         isOpen={ this.state.detailIsOpened }
         onClose={ this.detailClose }
+        onMoveBook={(book, shelf) => {
+          this.moveBook(book, shelf)
+          console.log(book, shelf)
+          history.push('/')
+          this.detailClose()
+        }}
       />
       <Route
         exact path="/"

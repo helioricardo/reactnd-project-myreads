@@ -7,7 +7,7 @@ import './BookDetail.css'
 
 class BookDetail extends Component {
   render () {
-    const { onClose, book } = this.props
+    const { onClose, book, onMoveBook } = this.props
     const isValidBook = (book !== null && typeof book === 'object')
     if(!isValidBook) return null
 
@@ -56,7 +56,10 @@ class BookDetail extends Component {
               <li><span className="detail-add">Add to MyReads:</span></li>
                 {shelves.map(shelf => (
                   <li key={ shelf.key }>
-                    <button className={(book.shelf === shelf.key) ? "selected" : ""}>
+                    <button
+                      className={(book.shelf === shelf.key) ? "selected" : ""}
+                      onClick={() => { onMoveBook(book, shelf.key) }}
+                    >
                       { shelf.title }
                     </button>
                   </li>
@@ -72,7 +75,8 @@ class BookDetail extends Component {
 
 BookDetail.propTypes = {
   book: PropTypes.object,
-  onClose: PropTypes.func.isRequired
+  onClose: PropTypes.func.isRequired,
+  onMoveBook: PropTypes.func.isRequired,
 }
 
 export default BookDetail
