@@ -126,7 +126,7 @@
   padding: 5px 10px;
   border-radius: 5px;
   background: #999;
-  margin-right: 10px;
+  margin: 2px 10px 2px 0;
   border: none;
   transition: background-color 500ms;
 }
@@ -134,4 +134,19 @@
 .detail-shelves button.selected,
 .detail-shelves button:hover {
   background: #2e7c31;
+}
+
+@media (max-width: 544px)
+{
+  .ReactModal__Content {
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+  }
+
+  .detail-subtitle {
+    display: block;
+    margin: 0;
+  }
 }

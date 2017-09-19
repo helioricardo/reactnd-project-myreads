@@ -184,3 +184,14 @@ body, .app {
   text-align: center;
   font-size: 0.8em;
 }
+
+@media (max-width: 544px)
+{
+  .list-books-title h1 {
+    font-size: 85%;
+  }
+
+  .bookshelf-title {
+    font-size: 90%;
+  }
+}
