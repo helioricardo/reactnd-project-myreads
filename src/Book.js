@@ -3,9 +3,12 @@ import PropTypes from 'prop-types'
 import shelves from './Shelves'
 
 const Book = props => (
-  <div className={(props.shelf !== "none") ? "book book-on-shelf" : "book"}>
+  <div className={(props.shelf !== "none" && props.onSearchPage) ? "book book-on-shelf" : "book"}>
     <div className="book-top">
-      <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.image})` }}></div>
+      <button
+        className="book-cover"
+        onClick={() => props.onBookDetail()}
+        style={{ width: 128, height: 193, backgroundImage: `url(${props.image})` }} />
           <div className="book-shelf-changer">
             <select
               value={ props.shelf }
@@ -13,7 +16,7 @@ const Book = props => (
               <option value="none" disabled>Move to...</option>
               {
                 shelves.map((shelf) => (
-                  <option key={shelf.key} value={ shelf.key }>{ shelf.title }</option>
+                  <option key={ shelf.key } value={ shelf.key }>{ shelf.title }</option>
                 ))
               }
               { !props.onSearchPage &&
@@ -28,12 +31,13 @@ const Book = props => (
 )
 
 Book.propTypes = {
-  image: PropTypes.string.isRequired,
+  image: PropTypes.string,
   title: PropTypes.string.isRequired,
   authors: PropTypes.string,
   shelf: PropTypes.string.isRequired,
   onMoveBook: PropTypes.func.isRequired,
-  onSearchPage: PropTypes.bool
+  onSearchPage: PropTypes.bool,
+  onBookDetail: PropTypes.func.isRequired
 }
 
 export default Book
