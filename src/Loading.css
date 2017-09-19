@@ -1,0 +1,42 @@
+.loading-backdrop {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  transition: opacity 300ms;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loading-on {
+  opacity: 1;
+}
+
+.loading-box {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 10px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  transition: opacity 500ms;
+  opacity: 0;
+}
+
+.loading-on .loading-box {
+  opacity: 1;
+}
+
+.loading-spinner {
+  flex: 1;
+  background: url('./icons/grid.svg') center;
+  background-size: contain;
+  margin: 20px;
+}

@@ -7,22 +7,29 @@ import './App.css'
 import BooksList from './BooksList'
 import BooksSearch from './BooksSearch'
 import BookDetail from './BookDetail'
+import Loading from './Loading'
 
 class BooksApp extends React.Component {
   state = {
     books: [],
     searchResults: [],
     bookInDetail: null,
-    detailIsOpened: false
+    detailIsOpened: false,
+    loading: false
   }
 
+  isLoading = (loading) => this.setState({ loading })
+
   updateBooks = () => {
+    this.isLoading(true);
     BooksAPI
       .getAll()
       .then(books => this.setState({ books }))
+      .then(() => this.isLoading(false))
   }
 
   moveBook = (book, shelf) => {
+    this.isLoading(true);
     BooksAPI
       .update(book, shelf)
       .then(() => BooksAPI.get(book.id))
@@ -43,6 +50,7 @@ class BooksApp extends React.Component {
           })
         }
       })
+      .then(() => this.isLoading(false))
   }
 
   mapShelvesToSearchResults = searchResults => {
@@ -59,6 +67,7 @@ class BooksApp extends React.Component {
   }
 
   searchBooks = (query) => {
+    this.isLoading(true);
     BooksAPI
       .search(query, 20)
       .then(searchResults => {
@@ -68,6 +77,7 @@ class BooksApp extends React.Component {
         }
         this.mapShelvesToSearchResults(searchResults)
       })
+      .then(() => this.isLoading(false))
   }
 
   componentDidMount() {
@@ -89,6 +99,7 @@ class BooksApp extends React.Component {
 
   render = () => (
     <div className="app">
+      <Loading loading={ this.state.loading } />
       <BookDetail
         book={ this.state.bookInDetail }
         isOpen={ this.state.detailIsOpened }
