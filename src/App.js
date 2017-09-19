@@ -30,6 +30,8 @@ class BooksApp extends React.Component {
   }
 
   moveBook = (book, shelf) => {
+    if(book.shelf === shelf) return
+
     this.isLoading(true);
     BooksAPI
       .update(book, shelf)
