@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import shelves from './Shelves'
+
+import shelves from '../utils/Shelves'
 
 const Book = props => (
   <div className={(props.shelf !== "none" && props.onSearchPage) ? "book book-on-shelf" : "book"}>

@@ -3,8 +3,9 @@ import PropTypes from 'prop-types'
 import Modal from 'react-modal'
 import moment from 'moment'
 import QRCode from 'qrcode.react'
-import shelves from './Shelves'
-import './BookDetail.css'
+
+import shelves from '../utils/Shelves'
+import '../styles/BookDetail.css'
 
 class BookDetail extends Component {
   returnDetailsInfo = book => {

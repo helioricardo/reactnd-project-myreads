@@ -1,13 +1,14 @@
 import React from 'react'
 import Route from 'react-router-dom/Route'
-import history from './history'
+import history from './utils/history'
 import debounce from 'throttle-debounce/debounce'
-import * as BooksAPI from './BooksAPI'
-import './App.css'
-import BooksList from './BooksList'
-import BooksSearch from './BooksSearch'
-import BookDetail from './BookDetail'
-import Loading from './Loading'
+
+import './styles/App.css'
+import * as BooksAPI from './utils/BooksAPI'
+import BooksList from './components/BooksList'
+import BooksSearch from './components/BooksSearch'
+import BookDetail from './components/BookDetail'
+import Loading from './components/Loading'
 
 class BooksApp extends React.Component {
   state = {

@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Link from 'react-router-dom/Link'
+
 import Shelf from './Shelf'
-import shelves from './Shelves'
+import shelves from '../utils/Shelves'
 
 const BooksList = ({ books, title, onMoveBook, onBookDetail }) => (
   <div className="list-books">

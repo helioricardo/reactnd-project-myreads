@@ -21,7 +21,6 @@
   align-content: stretch;
 }
 
-
 /* book detail header */
 
 .detail-close {
@@ -30,7 +29,7 @@
   right: 20px;
   border: none;
   font-size: 0;
-  background: transparent url(./icons/arrow-back.svg) center center;
+  background: transparent url(../icons/arrow-back.svg) center center;
   height: 50px;
   width: 50px;
   background-size: contain;

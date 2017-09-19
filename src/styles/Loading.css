@@ -36,7 +36,7 @@
 
 .loading-spinner {
   flex: 1;
-  background: url('./icons/grid.svg') center;
+  background: url('../icons/grid.svg') center;
   background-size: contain;
   margin: 20px;
 }
