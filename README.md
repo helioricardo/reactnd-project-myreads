@@ -84,12 +84,25 @@ The backend API uses a fixed set of cached search results and is limited to a pa
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). You can find more information on how to perform common tasks [here](https://github.com/facebookincubator/create-react-app/blob/master/packages/react-scripts/template/README.md).
 
-## Contributing
-
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
-
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
-
 ## Heroku
 
 O código está disponibilizado na plataforma Heroku - https://pacific-gorge-61340.herokuapp.com/
+
+## Além dos requisitos
+
+Além dos requisitos exigidos na [Especificações do projeto](https://review.udacity.com/#!/rubrics/918/view), foram adicionadas as seguintes features:
+
+### UX / UI
+
+* Micro animações
+* Estilos responsivos
+* Indicador de carregamento (loading)
+
+
+### Regras de negócio
+
+* Detalhes de um livro (ao clicar na capa) com:
+  * Maiores informações sobre o livro
+  * QRCode para a o link do livro
+  * Possibilidade de mover o livro de prateleiras direto do popup
+* Debounce para reduzir chamadas a API
