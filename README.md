@@ -86,7 +86,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Heroku
 
-O código está disponibilizado na plataforma Heroku - https://pacific-gorge-61340.herokuapp.com/
+O código está disponibilizado na plataforma Heroku - https://myreads-hr.herokuapp.com/
 
 ## Além dos requisitos
 
